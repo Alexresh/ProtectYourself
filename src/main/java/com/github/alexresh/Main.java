@@ -9,16 +9,18 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         DatabaseHandler handler = DatabaseHandler.getInstance();
-        this.getCommand("i").setExecutor(new CommandsManager());
-        this.getCommand("white").setExecutor(new CommandsManager());
-        BukkitScheduler scheduler = getServer().getScheduler();
+        CommandsManager commandsManager = new CommandsManager();
+        this.getCommand("i").setExecutor(commandsManager);
+        getCommand("i").setTabCompleter(commandsManager);
+        //this.getCommand("white").setExecutor(new CommandsManager());
+        /*BukkitScheduler scheduler = getServer().getScheduler();
         scheduler.scheduleSyncRepeatingTask(this, new Runnable() {
             @Override
             public void run() {
                 DatabaseHandler.getInstance().purgeSubscribers();
                 Bukkit.broadcastMessage("Удаление игроков...");
             }
-        }, 0L, 20*30L);
+        }, 0L, 20*30L);*/
         getServer().getPluginManager().registerEvents(new EventsManager(), this);
     }
 }

@@ -20,7 +20,7 @@ public class DatabaseHandler {
             this.connection = DriverManager.getConnection(conStr);
             createBlockTable();
             createPlayerTable();
-            createSubscribersTable();
+            //createSubscribersTable();
         } catch (SQLException ex) {
             Bukkit.getLogger().info(ex.getSQLState());
         }
@@ -197,7 +197,7 @@ public class DatabaseHandler {
 
     private void createBlockTable(){
         String sql = "Create table if not exists Blocks(id integer primary key autoincrement, " +
-                "time datetime default (datetime('now','localtime'))," +
+                "time datetime default (datetime('now','localtime','+3 hour'))," +
                 "player text not null," +
                 "action text not null," +
                 "block text not null,"+

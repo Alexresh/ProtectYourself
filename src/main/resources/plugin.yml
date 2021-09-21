@@ -6,6 +6,3 @@ commands:
   i:
     description: Show inspection
     usage: /i
-  white:
-    description: Add user to whitelist and give him 30 days
-    usage: /white nick
